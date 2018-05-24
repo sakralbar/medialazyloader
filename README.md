@@ -38,7 +38,7 @@ In this case, I used the image code of the gif format is one pixel in size.
 ## Background images
 You can add a class "lazy" to any element that has a background image. After the element appears in the viewport, class "lazy_loaded" is added to class "lazy". You can use this as follows:
 
-```html
+```css
 .block{
     background-image: url(../img/placeholder.png);
 }
