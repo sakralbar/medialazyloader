@@ -6,9 +6,9 @@
 (function () {
 
     function changeAttributes(elem) {
-        for (let dataAttribute in elem.dataset) {
+        for (var dataAttribute in elem.dataset) {
             elem.setAttribute(dataAttribute, elem.dataset[dataAttribute]);
-            elem.removeAttribute(`data-${dataAttribute}`);
+            elem.removeAttribute('data-${dataAttribute}');
         }
     }
 
