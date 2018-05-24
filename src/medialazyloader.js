@@ -1,5 +1,5 @@
 /**
- * MediaLazyLoader.js version 0.1
+ * MediaLazyLoader.js version 1.0.0
  * Custom lazy loader for Zdorov company
  **/
 

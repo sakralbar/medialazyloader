@@ -1,4 +1,4 @@
-# mediaLazyLoader.js (Simple lazy loader with support for tags img, picture, video, iframe and background images)
+# mediaLazyLoader.js (Simple lazy loader)
 
 mediaLazyLoader.js is a small lazy loading script for `<img>`, `<picture>`, `<video>` and `<iframe>` elements with background images support.
 
@@ -10,7 +10,7 @@ First, connect the script to your project:
 <script src="mediaLazyLoader.min.js"></script>
 ```
 
-You should add a class 'lazy' to all the elements that should use lazy loading:
+Than add a class "lazy" to all the elements that should use lazy loading:
 
 ```html
 <img class="lazy" src="img/image.jpg">
@@ -25,5 +25,12 @@ You should add a class 'lazy' to all the elements that should use lazy loading:
     <source src="bg.webm" type="video/webm">
 </video>
 
-<iframe class="lazy" src="https://www.youtube.com/embed/uHMm7-Zc404?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe class="lazy" src="https://www.youtube.com/embed/dfIHfdg?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 ```
+Now replace all the "src" attributes with the "data-src" and add your placeholder or lowres images to "src" like:
+
+```html
+<img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="img/image.jpg">
+```
+
+In this case, I used the image code of the gif format is one pixel in size.
