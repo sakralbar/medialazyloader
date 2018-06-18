@@ -5,6 +5,7 @@
 
 (function () {
 
+    //change data-attributes for tags
     function changeAttributes(elem) {
         for (var dataAttribute in elem.dataset) {
             elem.setAttribute(dataAttribute, elem.dataset[dataAttribute]);
@@ -12,12 +13,26 @@
         }
     }
 
+    //change data-attributes for <source> elements
     function changeSourcesAttributes(elem) {
         [].slice.call(elem.querySelectorAll("source")).forEach(source => {
             changeAttributes(source);
         });
     }
 
+    //add class onload
+    function addClassOnload(elem) {
+
+        if (elem.hasAttribute('src')) {
+            elem.onload = function () {
+                elem.classList.add("lazy_loaded");
+            };
+        } else {
+            elem.classList.add("lazy_loaded");
+        }
+    }
+
+    //main function to service lazy elements
     function tagHandling(elem) {
         if (elem.tagName === "IMG") {
             let parentElement = elem.parentNode;
@@ -35,6 +50,8 @@
             changeSourcesAttributes(elem);
             elem.load();
         }
+        
+        addClassOnload(elem);
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -48,14 +65,11 @@
                         let lazyTag = entry.target;
 
                         tagHandling(lazyTag);
-
                         lazyTagsObserver.unobserve(lazyTag);
-                        lazyTag.classList.add("lazy_loaded");
-
                     }
                 });
             },
-                    {rootMargin: "0px 0px 200px 0px"}
+                    {rootMargin: "0px 0px 400px 0px"}
             );
 
             lazyTags.forEach(function (lazyTag) {
@@ -74,11 +88,9 @@
 
                     setTimeout(function () {
                         lazyTags.forEach(function (lazyTag) {
-                            if ((lazyTag.getBoundingClientRect().top - 200 <= window.innerHeight && lazyTag.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyTag).display !== "none") {
+                            if ((lazyTag.getBoundingClientRect().top - 400 <= window.innerHeight && lazyTag.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyTag).display !== "none") {
 
                                 tagHandling(lazyTag);
-
-                                lazyTag.classList.add("lazy_loaded");
 
                                 if (lazyTags.length === 0) {
                                     document.removeEventListener("scroll", lazyLoad);
