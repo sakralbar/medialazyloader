@@ -7,7 +7,7 @@ mediaLazyLoader.js is a small lazy loading script for `<img>`, `<picture>`, `<vi
 First, connect the script to your project:
 
 ```html
-<script src="mediaLazyLoader.min.js"></script>
+<script src="medialazyloader.js"></script>
 ```
 
 Than add a class "lazy" to all the elements that should use lazy loading:
