@@ -1,5 +1,5 @@
 /**
- * MediaLazyLoader.js version 1.0.1
+ * MediaLazyLoader.js version 1.1
  * Custom lazy loader for Zdorov company
  **/
 
@@ -30,6 +30,9 @@
         } else {
             elem.classList.add("lazy_loaded");
         }
+
+        var eventLoaded = new Event('loaded');
+        elem.dispatchEvent(eventLoaded);
     }
 
     //main function to service lazy elements
@@ -50,7 +53,7 @@
             changeSourcesAttributes(elem);
             elem.load();
         }
-        
+
         addClassOnload(elem);
     }
 
@@ -69,7 +72,7 @@
                     }
                 });
             },
-                    {rootMargin: "0px 0px 400px 0px"}
+                { rootMargin: "0px 0px 400px 0px" }
             );
 
             lazyTags.forEach(function (lazyTag) {
