@@ -47,3 +47,4 @@ You can add a class "lazy" to any element that has a background image. After the
     background-image: url(../img/full-bg.jpg);
 }
 ```
+When an element is loaded, a "loaded" event fires.
